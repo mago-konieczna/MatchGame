@@ -23,6 +23,30 @@ namespace MatchGame
         public MainWindow()
         {
             InitializeComponent();
+            SetUpGame();
+        }
+
+        private void SetUpGame()
+        {
+            List<string> superHeroEmoji = new List<string>()
+            {"🦸" , "🦸",
+            "🦸‍♀️" , "🦸‍♀️",
+            "🦹" , "🦹",
+            "🤖" , "🤖",
+            "🥷" , "🥷",
+            "🧙‍♂️" , "🧙‍♂️",
+            "🧜‍♂️" , "🧜‍♂️",
+            "🧛" , "🧛",
+            }; 
+            Random random = new Random();
+            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
+            {
+                int index = random.Next(superHeroEmoji.Count);
+                string nextEmoji = superHeroEmoji[index];
+                textBlock.Text = nextEmoji;
+                superHeroEmoji.RemoveAt(index);
+
+            }
         }
     }
 }
